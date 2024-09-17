@@ -7,6 +7,6 @@ PruebaTecnicaReact1
 
 - Muestra una imagen de un gato con la primera palabra.
 
-Facts Random: https://catfact.ninja/fact
+- Facts Random: https://catfact.ninja/fact
 
-Imagen random: https://cataas.com/cat/says/hello
+- Imagen random: https://cataas.com/cat/says/hello

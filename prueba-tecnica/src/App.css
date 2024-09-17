@@ -1,0 +1,8 @@
+.asd {
+    width: 400px;
+    height: 200px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+  }
