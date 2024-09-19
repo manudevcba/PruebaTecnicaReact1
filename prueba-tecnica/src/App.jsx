@@ -1,37 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { useFetch } from './useFetch'
+import React from 'react'
 import './App.css'
+import { useCatImage } from './hooks/useCatImage.js'
+import { useCatFact } from './hooks/useCatFact.js'
 
 export function App () {
-  const { data, loading, error } = useFetch('https://catfact.ninja/fact')
+  const { fact, refreshFact } = useCatFact()
+  const { imageUrl } = useCatImage({ fact })
 
-  function primeraPalabra (text) {
-    if (!text) return ''
-
-    let formaPalabra = ''
-
-    for (let i = 0; i < text.length; i++) {
-      if (/^[a-zA-Z]$/.test(text[i])) {
-        formaPalabra += text[i]
-      } else {
-        return formaPalabra
-      }
-    }
+  const handleClick = async () => {
+    refreshFact()
   }
 
   return (
-    <>
-      <h1>App gatitos 🐱‍👤</h1>
+    <main>
+      <h1>App de gatitos</h1>
 
-      <a>
-        {error && <div>Error:{error} </div>}
-        {loading && <div>Loading...</div>}
-        {data?.fact}
+      <button onClick={handleClick}>Get new fact</button>
 
-      </a>
-      <br /><br />
-      <p>La primera palabra del parrafto es: {primeraPalabra(data?.fact)}  </p>
-
-    </>
+      {fact && <p>{fact}</p>}
+      {imageUrl && <img src={imageUrl} alt={`Image extracted using the first three words for ${fact}`} />}
+    </main>
   )
 }
